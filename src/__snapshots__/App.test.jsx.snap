@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders without crashing 1`] = `
+<div
+  className="Container"
+>
+  <h1
+    className="MainTitle"
+  >
+    CO
+    <span
+      className="SubTitle"
+    >
+      dwa
+    </span>
+  </h1>
+</div>
+`;
