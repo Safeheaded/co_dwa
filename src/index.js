@@ -4,12 +4,12 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles/';
-import { grey } from '@material-ui/core/colors/';
+import { blue } from '@material-ui/core/colors/';
 import 'typeface-roboto';
 
 const theme = createMuiTheme({
     palette: {
-        primary: grey
+        primary: blue
     }
 });
 
