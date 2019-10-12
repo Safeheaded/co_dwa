@@ -1,11 +1,11 @@
 import React from 'react';
-import styles from './Menu.module.sass';
+import { AppBar, Typography } from '@material-ui/core';
 
 function Menu() {
     return (
-        <div className={styles.Menu}>
-            <h1>LOGO</h1>
-        </div>
+        <AppBar>
+            <Typography variant="h1">LOGO</Typography>
+        </AppBar>
     );
 }
 

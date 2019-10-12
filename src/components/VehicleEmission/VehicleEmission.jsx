@@ -1,29 +1,32 @@
 import React from 'react';
-import { MdDirectionsCar, MdDirectionsBus } from 'react-icons/md';
 import styles from './VehicleEmission.module.sass';
 import PropTypes from 'prop-types';
+import { Paper, Typography } from '@material-ui/core';
+import { DirectionsCar, DirectionsBus } from '@material-ui/icons';
 
 const iconsProps = {
-    size: 40,
+    fontSize: 'large',
     className: styles.Icon
 };
 
 const vehiclesToIcons = {
-    car: <MdDirectionsCar {...iconsProps} />,
-    bus: <MdDirectionsBus {...iconsProps} />
+    car: <DirectionsCar {...iconsProps} />,
+    bus: <DirectionsBus {...iconsProps} />
 };
 
 const vehicleEmission = props => {
     const vehicleIcon = vehiclesToIcons[props.vehicle];
 
     return (
-        <article className={styles.EmissionTab}>
+        <Paper className={styles.EmissionTab}>
             {vehicleIcon}
             <section>
-                <h4 className={styles.IconsHeader}>2000kg CO2</h4>
-                <h5 className={styles.IconsHeader}>140%</h5>
+                <Typography className={styles.IconsHeader}>
+                    2000kg CO2
+                </Typography>
+                <Typography className={styles.IconsHeader}>140%</Typography>
             </section>
-        </article>
+        </Paper>
     );
 };
 
