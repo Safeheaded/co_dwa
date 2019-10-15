@@ -9,7 +9,7 @@ class App extends Component {
         return (
             <>
                 <Menu />
-                <Container className={styles.Container}>
+                <Container maxWidth="xl" className={styles.Container}>
                     <SimpleEmissionDisplay />
                 </Container>
             </>

@@ -1,11 +1,12 @@
 import React from 'react';
-import { AppBar, Typography } from '@material-ui/core';
+import { Toolbar } from '@material-ui/core';
+import Drawer from '../Drawer/Drawer';
 
 function menu() {
     return (
-        <AppBar>
-            <Typography variant="h1">LOGO</Typography>
-        </AppBar>
+        <Toolbar style={{ backgroundColor: 'white' }}>
+            <Drawer />
+        </Toolbar>
     );
 }
 

@@ -10,7 +10,8 @@ import {
 
 const iconsProps = {
     fontSize: 'large',
-    className: styles.Icon
+    className: styles.Icon,
+    color: 'primary'
 };
 
 const vehiclesToIcons = {

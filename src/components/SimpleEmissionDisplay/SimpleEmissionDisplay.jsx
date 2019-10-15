@@ -8,9 +8,14 @@ import {
     Typography,
     TextField
 } from '@material-ui/core';
+import { styled } from '@material-ui/styles';
 import styles from './SimpleEmissionDisplay.module.sass';
 
 const maxDistance = 40000;
+
+const NoShadowCard = styled(Card)({
+    boxShadow: 'none'
+});
 class SimpleEmissionDisplay extends Component {
     state = {
         distance: 0
@@ -36,7 +41,7 @@ class SimpleEmissionDisplay extends Component {
         );
 
         return (
-            <Card>
+            <NoShadowCard>
                 <CardHeader title="Emisja w linii prostej" />
                 <CardContent>
                     <VehicleEmission vehicle="car" />
@@ -54,7 +59,7 @@ class SimpleEmissionDisplay extends Component {
                         }}
                     />
                 </CardContent>
-            </Card>
+            </NoShadowCard>
         );
     }
 }
