@@ -1,30 +1,35 @@
-import React from 'react';
-import Drawer from '@material-ui/core/Drawer';
+import React, { Component } from 'react';
+import { Drawer } from '@material-ui/core';
 import styles from './Drawer.module.sass';
 import { Menu as MenuIcon } from '@material-ui/icons';
+import SideDrawer from './LinksList/LinksList';
 
-export default function() {
-    const [state, setState] = React.useState({
+export default class Menu extends Component {
+    state = {
         drawer: false
-    });
-
-    const toggle = (side, open) => () => {
-        setState({ state, [side]: open });
     };
 
-    const sideList = () => <div className={styles.List}>AAAAAAAAAA</div>;
+    toggle = (side, open) => {
+        this.setState({ ...this.state, [side]: open });
+    };
 
-    return (
-        <div className={styles.button}>
-            <MenuIcon
-                fontSize="large"
-                className={styles.Icon}
-                role="button"
-                onClick={toggle('drawer', true)}
-            />
-            <Drawer open={state.drawer} onClose={toggle('drawer', false)}>
-                {sideList('drawer')}
-            </Drawer>
-        </div>
-    );
+    render() {
+        return (
+            <div className={styles.button}>
+                <MenuIcon
+                    style={{ position: 'relative', zIndex: 100000 }}
+                    fontSize="large"
+                    className={styles.Icon}
+                    role="button"
+                    onClick={() => this.toggle('drawer', !this.state.drawer)}
+                />
+                <Drawer
+                    open={this.state.drawer}
+                    onClose={() => this.toggle('drawer', false)}
+                >
+                    <SideDrawer toggleHandler={this.toggle} />
+                </Drawer>
+            </div>
+        );
+    }
 }
