@@ -6,6 +6,7 @@ import * as serviceWorker from './serviceWorker';
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles/';
 import { pink } from '@material-ui/core/colors/';
 import 'typeface-roboto';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 const theme = createMuiTheme({
     palette: {
@@ -15,7 +16,9 @@ const theme = createMuiTheme({
 
 const app = (
     <MuiThemeProvider theme={theme}>
-        <App />
+        <Router>
+            <App />
+        </Router>
     </MuiThemeProvider>
 );
 
