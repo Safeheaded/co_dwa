@@ -120,3 +120,19 @@ sketch
 .history
 
 # End of https://www.gitignore.io/api/node,react,visualstudiocode
+
+# Created by https://www.gitignore.io/api/firebase
+# Edit at https://www.gitignore.io/?templates=firebase
+
+### Firebase ###
+.idea
+**/node_modules/*
+**/.firebaserc
+
+### Firebase Patch ###
+.runtimeconfig.json
+.firebase/
+
+# End of https://www.gitignore.io/api/firebase
+
+build
