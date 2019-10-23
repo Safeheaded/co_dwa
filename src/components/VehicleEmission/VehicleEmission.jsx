@@ -22,6 +22,19 @@ const vehiclesToIcons = {
 
 const vehicleEmission = props => {
     const vehicleIcon = vehiclesToIcons[props.vehicle];
+    const distance = props.distance;
+    const baseEmission = props.baseEmission;
+    const emission = props.emission;
+
+    let percentage = baseEmission
+        ? ((emission * distance) / (baseEmission * distance)) * 100
+        : 100;
+
+    percentage = isNaN(percentage) ? 0 : percentage;
+
+    const roundedPercecntage = Math.round(percentage);
+
+    const actualEmission = (distance * emission) / 1000;
 
     return (
         <>
@@ -29,9 +42,11 @@ const vehicleEmission = props => {
                 {vehicleIcon}
                 <section>
                     <Typography className={styles.IconsHeader}>
-                        2000kg CO2
+                        {actualEmission}kg CO2
                     </Typography>
-                    <Typography className={styles.IconsHeader}>140%</Typography>
+                    <Typography className={styles.IconsHeader}>
+                        {roundedPercecntage}%
+                    </Typography>
                 </section>
             </article>
             <Divider variant="middle" />
@@ -40,7 +55,10 @@ const vehicleEmission = props => {
 };
 
 vehicleEmission.propTypes = {
-    vehicle: PropTypes.oneOf(['car', 'bus', 'train']).isRequired
+    vehicle: PropTypes.oneOf(['car', 'bus', 'train']).isRequired,
+    distance: PropTypes.number.isRequired,
+    emission: PropTypes.number.isRequired,
+    baseEmission: PropTypes.number
 };
 
 export default vehicleEmission;

@@ -18,7 +18,7 @@ const NoShadowCard = styled(Card)({
 });
 class SimpleEmissionDisplay extends Component {
     state = {
-        distance: 0
+        distance: 100
     };
 
     updateDistance = value => {
@@ -44,15 +44,29 @@ class SimpleEmissionDisplay extends Component {
             <NoShadowCard>
                 <CardHeader title="Emisja w linii prostej" />
                 <CardContent>
-                    <VehicleEmission vehicle="car" />
-                    <VehicleEmission vehicle="bus" />
-                    <VehicleEmission vehicle="train" />
+                    <VehicleEmission
+                        distance={this.state.distance}
+                        emission={100}
+                        vehicle="car"
+                    />
+                    <VehicleEmission
+                        distance={this.state.distance}
+                        emission={75}
+                        baseEmission={100}
+                        vehicle="bus"
+                    />
+                    <VehicleEmission
+                        distance={this.state.distance}
+                        emission={28}
+                        baseEmission={100}
+                        vehicle="train"
+                    />
                     <Typography className={styles.DistanceDisplay} variant="h4">
                         Odległość: {distanceInput}km
                     </Typography>
                     <Slider
                         value={this.state.distance}
-                        min={0}
+                        min={1}
                         max={maxDistance}
                         onChange={(event, val) => {
                             this.updateDistance(val);
