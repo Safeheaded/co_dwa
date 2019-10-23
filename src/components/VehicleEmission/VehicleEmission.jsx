@@ -8,19 +8,19 @@ import {
     DirectionsRailway
 } from '@material-ui/icons';
 
-const iconsProps = {
-    fontSize: 'large',
-    className: styles.Icon,
-    color: 'primary'
-};
-
-const vehiclesToIcons = {
-    car: <DirectionsCar {...iconsProps} />,
-    bus: <DirectionsBus {...iconsProps} />,
-    train: <DirectionsRailway {...iconsProps} />
-};
-
 const vehicleEmission = props => {
+    const iconsProps = {
+        fontSize: 'large',
+        className: styles.Icon,
+        color: props.baseType === props.vehicle ? 'secondary' : 'primary'
+    };
+
+    const vehiclesToIcons = {
+        car: <DirectionsCar {...iconsProps} />,
+        bus: <DirectionsBus {...iconsProps} />,
+        train: <DirectionsRailway {...iconsProps} />
+    };
+
     const vehicleIcon = vehiclesToIcons[props.vehicle];
     const distance = props.distance;
     const baseEmission = props.baseEmission;
@@ -37,7 +37,10 @@ const vehicleEmission = props => {
     const actualEmission = (distance * emission) / 1000;
 
     return (
-        <>
+        <section
+            className={styles.EmissionWrapper}
+            onClick={() => props.baseEmissionHandler(props.vehicle)}
+        >
             <article className={styles.EmissionTab}>
                 {vehicleIcon}
                 <section>
@@ -50,7 +53,7 @@ const vehicleEmission = props => {
                 </section>
             </article>
             <Divider variant="middle" />
-        </>
+        </section>
     );
 };
 
@@ -58,7 +61,9 @@ vehicleEmission.propTypes = {
     vehicle: PropTypes.oneOf(['car', 'bus', 'train']).isRequired,
     distance: PropTypes.number.isRequired,
     emission: PropTypes.number.isRequired,
-    baseEmission: PropTypes.number
+    baseEmission: PropTypes.number.isRequired,
+    baseEmissionHandler: PropTypes.func.isRequired,
+    baseType: PropTypes.string.isRequired
 };
 
 export default vehicleEmission;

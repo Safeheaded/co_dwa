@@ -17,8 +17,19 @@ const NoShadowCard = styled(Card)({
     boxShadow: 'none'
 });
 class SimpleEmissionDisplay extends Component {
+    emissions = {
+        car: 100,
+        bus: 75,
+        train: 28
+    };
+
     state = {
-        distance: 100
+        distance: 100,
+        baseEmission: 'car'
+    };
+
+    changeBaseEmission = vehicle => {
+        this.setState({ baseEmission: vehicle });
     };
 
     updateDistance = value => {
@@ -40,26 +51,31 @@ class SimpleEmissionDisplay extends Component {
             />
         );
 
+        const sharedVehiclesProps = {
+            distance: this.state.distance,
+            baseEmission: this.emissions[this.state.baseEmission],
+            baseEmissionHandler: this.changeBaseEmission,
+            baseType: this.state.baseEmission
+        };
+
         return (
             <NoShadowCard>
                 <CardHeader title="Emisja w linii prostej" />
                 <CardContent>
                     <VehicleEmission
-                        distance={this.state.distance}
-                        emission={100}
+                        emission={this.emissions['car']}
                         vehicle="car"
+                        {...sharedVehiclesProps}
                     />
                     <VehicleEmission
-                        distance={this.state.distance}
-                        emission={75}
-                        baseEmission={100}
+                        emission={this.emissions['bus']}
                         vehicle="bus"
+                        {...sharedVehiclesProps}
                     />
                     <VehicleEmission
-                        distance={this.state.distance}
-                        emission={28}
-                        baseEmission={100}
+                        emission={this.emissions['train']}
                         vehicle="train"
+                        {...sharedVehiclesProps}
                     />
                     <Typography className={styles.DistanceDisplay} variant="h4">
                         Odległość: {distanceInput}km

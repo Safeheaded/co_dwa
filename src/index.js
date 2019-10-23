@@ -4,13 +4,18 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles/';
-import { pink } from '@material-ui/core/colors/';
+import { pink, cyan } from '@material-ui/core/colors/';
 import 'typeface-roboto';
 import { BrowserRouter as Router } from 'react-router-dom';
 
 const theme = createMuiTheme({
     palette: {
-        primary: pink
+        primary: {
+            main: pink[500]
+        },
+        secondary: {
+            main: cyan[700]
+        }
     }
 });
 
